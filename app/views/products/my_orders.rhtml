@@ -1,0 +1,21 @@
+<div id="orders">
+  <h2>My Orders</h2>
+  <p>
+    You are selling <b>#<%= pluralize(@my_products.size, "Product")%></b>
+  </p>
+  <p>
+    <b>#<%= pluralize(@pending_orders.size, "Order")%></b> pending
+  </p>
+  <h2>Orders to be shipped</h2>
+  <%= render :partial=> "home/notice"%>
+  <% form_tag(:action => "ship") do -%>
+
+  <table cellpadding="5" cellspacing="0">
+    <%= render(:partial => "order_line", :collection => @pending_orders) %>
+  </table>
+  <br />
+  <input type="submit" value=" SHIP CHECKED ITEMS " />
+
+  <% end -%>
+  <br />
+</div>

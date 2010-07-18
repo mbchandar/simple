@@ -1,0 +1,5 @@
+<div id="search">	
+	 <% form_for :home, :url => {:controller=>:home,:action => "search"},:html=>{:id=>"headersearch"} do |f| %>	 	
+	 	<%= f.text_field :search, :class=>'searchicon', :size => '100'%>		
+	 <%end%>	
+</div>

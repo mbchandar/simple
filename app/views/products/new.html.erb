@@ -1,0 +1,34 @@
+<%= include_tiny_mce_if_needed %>
+<h1>New product</h1>
+<% form_for(@product,:html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title,:size=>50 %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description , :cols=>50,:rows=>10, :class => 'mceEditor'%>
+  </p>
+  
+  <p>
+    <%= f.label :cost_price %> <%= f.text_field :price,:size=>5 %>
+    <%= f.label :selling_price %> <%= f.text_field :price,:size=>5 %>
+    <%= f.label :shipping_fee %> <%=  f.text_field :price,:size=>5 %>
+  </p>
+  <p>
+    <%= f.label :date_available %><br />
+    <%= f.datetime_select :date_available %>
+  </p>
+  <p>
+    Tags (seperated by space)<br/>
+    <%= text_field_tag('tags', '') %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>

@@ -1,0 +1,41 @@
+<% if @search %>
+  <%= render :partial => "search" %>
+  <h2>Products matching your keyword '<%=@search%>'</h2>
+<% else %>
+  <h2>Products which you can buy</h2>
+<% end %>
+
+<% for product in @products %>
+  <table border="0">
+    <tr>
+      <td>
+        <img width="200" height="200" src="<%= product.image_url %>"/>
+      </td>
+      <td valign="top">
+        <p>
+          <b><%=h product.title %></b>
+        </p>
+        <p class="description">
+          <%=h(truncate(product.description,500)) %>
+		  <%= link_to "read more", product.seo_text %>
+        </p>        
+        <p>
+          <%=h product.date_available.strftime("Available from %d %B %Y") unless !product.date_available? %>
+        </p>
+        <p>
+        	<div>
+          <b>Price:</b> <%=h product.price %>
+		  </div>          
+          <b><%= link_to image_tag("add_to_shopping_cart.png", :border=>0, :title=>'Add to Cart' ,:align => 'absmiddle'), {:action => 'add_to_cart', :id => product },:class => 'addtocart' %></b> |		  
+          <b><%= link_to pluralize(product.reviews.count,"Review"), product.to_reviews unless product.reviews.empty? %></b>
+        <br/>
+      </p>
+      <p>
+        <% if !product.tag_names.empty? %>
+          <b>Tags:</b> <%=h product.tag_names.join(" ") %>
+        <% end  %>
+      </p>
+    </td>
+  </tr>
+</table>
+<% end %>

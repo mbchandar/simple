@@ -1,0 +1,57 @@
+<% if !@items.empty? %>
+  <h2>My Cart Items</h2>
+  <table class="cart" width="100%">
+    <tr class="carttitle">
+      <td rowspan="2">
+        Product
+      </td>
+      <td colspan="3" align="center">
+        Price
+      </td>
+    </tr>
+    <tr class="carttitle">
+      <td>
+        Each
+      </td>
+      <td>
+        Qty
+      </td>
+      <td>
+        Total
+      </td>
+    </tr>
+    <%
+    for item in @items
+      product = item.product -%>
+      <tr>
+        <td align="left">
+          <%= check_box("remove", product.id, {}, "yes", "no") %>
+          <%= product.title %>
+        </td>
+        <td align="right">
+          <%= item.unit_price %>
+        </td>
+        <td align="right">
+          x <%= item.quantity %>
+        </td>
+        <td align="right">
+          <%= item.unit_price * item.quantity %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3" align="center">
+        <b>Total</b>
+      </td>
+      <td id="totalcell">
+        <b><%= @cart.total_price %></b>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="right">
+        <%= link_to "Continue Shopping...",:action => :index %>
+      </td>
+    </tr>
+  </table>
+
+<% end %>

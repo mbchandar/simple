@@ -1,0 +1,45 @@
+<div id="main">
+<%= render :partial => "checkout_cart" %> <br>
+<% form_for :home, :url => {:action => "save_order"} do |f| %>
+  <h2>Please enter your shipping details below</h2>
+   <%= error_messages_for("order") %>
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <% if logged_in? %>
+          <%= current_user.login  %><%= hidden_field("order","name",:value => current_user.login) %>
+        <% else %>
+          <%= text_field("order","name") %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>EMail:</td>
+      <td>
+        <% if logged_in? %>
+          <%= current_user.email  %><%= hidden_field("order","email",:value => current_user.email) %>
+        <% else %>
+          <%= text_field("order","email") %>
+        <% end %>
+
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>Delivery Address:</td>
+      <td><%= text_area("order", "address", "cols" => 40, "rows" => 5) %></td>
+    </tr>
+    <tr>
+      <td>Pay using:</td>
+      <td><%=
+        options = [["Select a payment option", ""]] + Order::PAYMENT_TYPES
+        select("order", "pay_type", options)
+      %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= submit_tag(" Checkout ") %></td>
+    </tr>
+  </table>
+<% end %>
+</div>

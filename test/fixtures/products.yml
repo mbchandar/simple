@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: Founders at Work
+  description: Jessica Livingston has 
+  price: 25
+
+two:
+  title: Dreaming in Code: Two Dozen 
+  description: Software is easy to make
+  price: 13

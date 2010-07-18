@@ -1,0 +1,7 @@
+<div id="side">
+  <%= render(:partial => "cart") %>
+
+  <% if !logged_in? %>
+    <%= render "sessions/new"  %>
+  <% end %>
+</div>

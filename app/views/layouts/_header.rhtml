@@ -1,0 +1,24 @@
+<div id="header">
+  <div class="superHeader">
+    <img src="/images/logo.png" align="absmiddle"/>
+    <!--b>testdomain</b-->
+    |<% if logged_in? %>
+      <span>You are logged in as: </span>
+      <%= current_user.login %>
+    <% else %>
+      <span>Welcome Guest</span> |
+    <% end %>
+    <% if logged_in? %>
+       <%= link_to 'Dashboard', dashboard_url %>
+      | <%= link_to 'Logout', logout_url %>
+    <% else %>
+      <%= link_to "Signup", signup_url %>
+      | <%= link_to 'Login', login_url %>
+    <% end %>
+    | <%= link_to 'Contact Us', 'contact' %>
+    | <%= link_to 'About Us', 'about' %>
+    | <%= link_to 'Blog', 'blog' %>
+
+  </div>
+
+</div>

@@ -1,0 +1,7 @@
+User has many Products
+User has many orders
+User has many line items
+
+Products belong to User
+Orders belong to User
+line

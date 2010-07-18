@@ -1,0 +1,22 @@
+<div id="main">
+  <h2>Dashboard</h2>
+  <h3>as a Buyer</h3>
+  
+  <p>
+    <%= link_to 'Products I have bought', orders_path %>
+  </p>
+  <h3>as a Seller</h3>
+  <p>
+    <%= link_to 'List of Products that I am Selling...', products_path %> | <%= link_to 'Add New product',:controller=>"products" ,:action => 'new' %>
+  </p>
+  <p>
+    <%= link_to 'Orders I have received...', orders_path %>
+  </p>
+  <h3>General Settings</h3>
+  <p>
+    <%= link_to 'Profile', change_password_url %>
+  </p>
+  <p>
+    <%= link_to 'Change Password', change_password_url %>
+  </p>
+</div>

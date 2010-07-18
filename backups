@@ -1,0 +1,4 @@
+      t.column :title,:string,:limit=>100,:null=>false
+      t.column :description,:text,:null=>false
+      t.column :image_url,:string,:limit=>200,:null=>false
+      t.column :price,:integer,:limit=>11,:null=>false

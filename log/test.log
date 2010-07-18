@@ -1,0 +1,470 @@
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000784)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.001371)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000165)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001299)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000749)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001365)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000921)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001661)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000765)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001047)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000902)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.014014)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.013523)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.000648)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001873)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.039656)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001890)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.001058)[0m   [0mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '15b6b40bbc0a295df983b4e56ecdd9689fedd6e6', '6c5e870b307ac5892da97311fe94f75f2ddf4b96', '2008-07-26 04:06:57', '2008-07-26 04:06:57', NULL, NULL, '7c4b2c46f328abe537d7c9a284f48029bdcc0720', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:36:57 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/7c4b2c46f328abe537d7c9a284f48029bdcc0720
+  [4;36;1mUser Load (0.011338)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+  [4;35;1mSQL (0.121653)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001140)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004093)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.004743)[0m   [0;1mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;35;1mSQL (0.004435)[0m   [0mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.003762)[0m   [0;1mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '15b6b40bbc0a295df983b4e56ecdd9689fedd6e6', '6c5e870b307ac5892da97311fe94f75f2ddf4b96', '2008-07-26 04:06:57', '2008-07-26 04:06:57', NULL, NULL, 'dd43c55641e3624e00f03d9af2de148546020ef0', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:36:57 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/dd43c55641e3624e00f03d9af2de148546020ef0
+  [4;35;1mSQL (0.006741)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.063811)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000746)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.022391)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001238)[0m   [0mUPDATE `users` SET `deleted_at` = '2008-07-26 04:06:58', `state` = 'deleted', `updated_at` = '2008-07-26 04:06:58' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.048927)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000254)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001911)[0m   [0;1mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;35;1mSQL (0.003090)[0m   [0mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.002292)[0m   [0;1mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '0b9e719e45a0155cbfd12df5cd6d88107aab5b62', 'f45035ab47d1a4e36a446666754c8b81c16a0b2b', '2008-07-26 04:06:58', '2008-07-26 04:06:58', NULL, NULL, '962883393cace971b119f7787b0cd44b18959c6d', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:36:58 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/962883393cace971b119f7787b0cd44b18959c6d
+  [4;35;1mUser Load (0.013941)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSQL (0.037986)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001718)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.015031)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.002029)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quentin2' AND `users`.id <> 1) [0m
+  [4;36;1mSQL (0.005099)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quentin@example.com' AND `users`.id <> 1) [0m
+  [4;35;1mUser Update (0.000661)[0m   [0mUPDATE `users` SET `login` = 'quentin2', `updated_at` = '2008-07-26 04:06:58' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.011621)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin2') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.191749)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000850)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.004473)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.002340)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.001743)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.002042)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.001915)[0m   [0mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', 'ac0f04ff29b27a9883e065838741accc2f96e502', 'f45035ab47d1a4e36a446666754c8b81c16a0b2b', '2008-07-26 04:06:58', '2008-07-26 04:06:58', NULL, NULL, NULL, NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:36:58 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: new password
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/
+  [4;36;1mSQL (0.014309)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000295)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.011166)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001131)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:06:59', `remember_token` = '6aaf45ace1f4f8f9c48be9f841180f1bcf8ba987', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.019387)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001480)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.013240)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001004)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-02 04:06:59', `remember_token` = '1d0e0b1fb661110d0d0f446e30e67d4bdfd1c0f4', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.013922)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000406)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.010456)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001321)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-02 04:06:59', `remember_token` = '1d0e0b1fb661110d0d0f446e30e67d4bdfd1c0f4', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.024301)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (-0.000371)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001718)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001362)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.000784)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.001318)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000244)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001423)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002165)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001635)[0m   [0mSELECT `login` FROM `users` WHERE (`users`.login IS NULL) [0m
+  [4;36;1mSQL (0.002368)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.001813)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000292)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000388)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002279)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001791)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001829)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.002137)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000169)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001514)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001502)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.002318)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.002058)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.002181)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000806)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001171)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.009788)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.001629)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quentin' AND `users`.id <> 1) [0m
+  [4;36;1mSQL (0.017577)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quentin@example.com' AND `users`.id <> 1) [0m
+  [4;35;1mUser Update (0.000245)[0m   [0mUPDATE `users` SET `crypted_password` = '4b6dd603c64f03bc2f676658e287094878df9603', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.012056)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.036125)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000400)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.009900)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.006410)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:06:59', `remember_token` = '6aaf45ace1f4f8f9c48be9f841180f1bcf8ba987', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.021581)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000495)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.008407)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.000683)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.014834)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (-0.000200)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.010268)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.000657)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:06:59', `remember_token` = '6aaf45ace1f4f8f9c48be9f841180f1bcf8ba987', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;35;1mUser Update (0.000851)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.034160)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000800)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.010157)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.000851)[0m   [0mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mUser Update (0.000302)[0m   [0;1mUPDATE `users` SET `activated_at` = '2008-07-26 04:06:59', `activation_code` = NULL, `state` = 'active', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+Sent mail to quentin@example.com
+
+Date: Sat, 26 Jul 2008 09:36:59 +0530
+From: ADMINEMAIL
+To: quentin@example.com
+Subject: [http://localhost:3005/] Your account has been activated!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+quentin, your account has been activated.  You may now start adding your plugins:
+
+  http://localhost:3005/
+  [4;35;1mSQL (0.139069)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001400)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.010490)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.001356)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;35;1mUser Update (0.002362)[0m   [0mUPDATE `users` SET `activation_code` = 'foo-bar', `activated_at` = NULL [0m
+  [4;36;1mUser Load (0.011595)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.002791)[0m   [0mUPDATE `users` SET `activation_code` = '3cee46b2969bb88ff3c72c893b4ea48c8a868f40', `state` = 'pending', `updated_at` = '2008-07-26 04:06:59' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.020021)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000194)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.010938)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.002886)[0m   [0mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:07:00' WHERE `id` = 1[0m
+  [4;36;1mUser Update (0.000988)[0m   [0;1mUPDATE `users` SET `activation_code` = NULL, `activated_at` = NULL [0m
+  [4;35;1mUser Load (0.013249)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.001070)[0m   [0;1mUPDATE `users` SET `state` = 'passive', `updated_at` = '2008-07-26 04:07:00' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.039398)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001032)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.008941)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.001019)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:07:00' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.008601)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;36;1mSQL (0.027797)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.004480)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000857)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.001080)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001537)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000705)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001997)[0m   [0mSELECT count(*) AS count_all FROM `products` [0m
+
+
+Processing ProductsController#create (for 0.0.0.0 at 2008-07-26 09:37:14) [POST]
+  Session ID: 
+  Parameters: {"product"=>{}, "action"=>"create", "controller"=>"products"}
+  [4;36;1mSQL (0.002680)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000809)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.003963)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000896)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001117)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000993)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000337)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001651)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (-0.000117)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000486)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000759)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001823)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.013528)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.011960)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.000956)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000635)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002607)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.002292)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000810)[0m   [0mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '7bc22c494c14dad9dc2781912e5e1009bcbf6cba', 'a910775d0bc3c840f296db6deb2cb671c14d4a7b', '2008-07-26 04:13:17', '2008-07-26 04:13:17', NULL, NULL, 'a41761f9d3242d3f7388f9f5e70124f6cb111e27', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:43:17 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/a41761f9d3242d3f7388f9f5e70124f6cb111e27
+  [4;36;1mUser Load (0.016218)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+  [4;35;1mSQL (0.021577)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001181)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002340)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.001699)[0m   [0;1mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;35;1mSQL (0.002283)[0m   [0mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000991)[0m   [0;1mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '7bc22c494c14dad9dc2781912e5e1009bcbf6cba', 'a910775d0bc3c840f296db6deb2cb671c14d4a7b', '2008-07-26 04:13:17', '2008-07-26 04:13:17', NULL, NULL, 'bad18bc4986d111fd9477f99b97a9e4aaab9696f', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:43:17 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/bad18bc4986d111fd9477f99b97a9e4aaab9696f
+  [4;35;1mSQL (0.002222)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.037230)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.005007)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.020352)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001702)[0m   [0mUPDATE `users` SET `deleted_at` = '2008-07-26 04:13:17', `state` = 'deleted', `updated_at` = '2008-07-26 04:13:17' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.033874)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001124)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002013)[0m   [0;1mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;35;1mSQL (0.001009)[0m   [0mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.001153)[0m   [0;1mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', '889a41a1f7513a52bfcebedf4f623c67c823672d', '45664f87a40021583c0cedaf1681664f68ac47a9', '2008-07-26 04:13:18', '2008-07-26 04:13:18', NULL, NULL, '1cd2cac84700fbefecffa04eafc6183b4370fd25', NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:43:18 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: quire
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/1cd2cac84700fbefecffa04eafc6183b4370fd25
+  [4;35;1mUser Load (0.010605)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSQL (0.133372)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000987)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.012928)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.001676)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quentin2' AND `users`.id <> 1) [0m
+  [4;36;1mSQL (0.002486)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quentin@example.com' AND `users`.id <> 1) [0m
+  [4;35;1mUser Update (0.001067)[0m   [0mUPDATE `users` SET `login` = 'quentin2', `updated_at` = '2008-07-26 04:13:18' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.023765)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin2') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.051946)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000740)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003540)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001508)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.001823)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.002051)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000613)[0m   [0mINSERT INTO `users` (`login`, `email`, `crypted_password`, `salt`, `created_at`, `updated_at`, `remember_token`, `remember_token_expires_at`, `activation_code`, `activated_at`, `state`, `deleted_at`) VALUES('quire', 'quire@example.com', 'da30f2880dfbad352477e3837f885878de14991f', '45664f87a40021583c0cedaf1681664f68ac47a9', '2008-07-26 04:13:18', '2008-07-26 04:13:18', NULL, NULL, NULL, NULL, 'pending', NULL)[0m
+Sent mail to quire@example.com
+
+Date: Sat, 26 Jul 2008 09:43:18 +0530
+From: ADMINEMAIL
+To: quire@example.com
+Subject: [http://localhost:3005/] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire
+  Password: new password
+
+Visit this url to activate your account:
+
+  http://localhost:3005//activate/
+  [4;36;1mSQL (0.016608)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000968)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.014104)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.001917)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:13:18', `remember_token` = '3ac36bcc7e6331ccdb77fd0ef37f8b07203e4921', `updated_at` = '2008-07-26 04:13:18' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.029363)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000188)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.011440)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.002096)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-02 04:13:18', `remember_token` = 'd2977abf7bf7feb04546cbe65dec96d12f4a1411', `updated_at` = '2008-07-26 04:13:18' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.031286)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000711)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.009668)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.000575)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-08-02 04:13:18', `remember_token` = 'd2977abf7bf7feb04546cbe65dec96d12f4a1411', `updated_at` = '2008-07-26 04:13:18' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.042720)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001200)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001559)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.002435)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001578)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.002890)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.001131)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000921)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002610)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001563)[0m   [0mSELECT `login` FROM `users` WHERE (`users`.login IS NULL) [0m
+  [4;36;1mSQL (0.002204)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.002254)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.001175)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.003562)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001534)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001302)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001835)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000540)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.001251)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.001388)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002336)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.002769)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quire') [0m
+  [4;36;1mSQL (0.001641)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quire@example.com') [0m
+  [4;35;1mSQL (0.001800)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000321)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.002664)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.008131)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSQL (0.002121)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'quentin' AND `users`.id <> 1) [0m
+  [4;36;1mSQL (0.020142)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'quentin@example.com' AND `users`.id <> 1) [0m
+  [4;35;1mUser Update (0.000140)[0m   [0mUPDATE `users` SET `crypted_password` = '4b6dd603c64f03bc2f676658e287094878df9603', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;36;1mUser Load (0.015132)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;35;1mSQL (0.266319)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.002705)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.031188)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.019612)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:13:19', `remember_token` = '53737186ad5977ecd324f2aa7ef073a8c8ba3633', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.058445)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.017294)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.025965)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.019183)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.065589)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.025946)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.011122)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.001505)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-08-09 04:13:19', `remember_token` = '53737186ad5977ecd324f2aa7ef073a8c8ba3633', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;35;1mUser Update (0.001702)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.045171)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (-0.000508)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.009271)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.002124)[0m   [0mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+  [4;36;1mUser Update (0.001515)[0m   [0;1mUPDATE `users` SET `activated_at` = '2008-07-26 04:13:19', `activation_code` = NULL, `state` = 'active', `updated_at` = '2008-07-26 04:13:19' WHERE `id` = 1[0m
+Sent mail to quentin@example.com
+
+Date: Sat, 26 Jul 2008 09:43:19 +0530
+From: ADMINEMAIL
+To: quentin@example.com
+Subject: [http://localhost:3005/] Your account has been activated!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+quentin, your account has been activated.  You may now start adding your plugins:
+
+  http://localhost:3005/
+  [4;35;1mSQL (0.067602)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000524)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.010652)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.000578)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:13:20' WHERE `id` = 1[0m
+  [4;35;1mUser Update (0.000670)[0m   [0mUPDATE `users` SET `activation_code` = 'foo-bar', `activated_at` = NULL [0m
+  [4;36;1mUser Load (0.009160)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.002092)[0m   [0mUPDATE `users` SET `activation_code` = '41632b19f93c3e7c5dae5599cf9fc255ffa7fd5d', `state` = 'pending', `updated_at` = '2008-07-26 04:13:20' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.062061)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000921)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.012252)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Update (0.000749)[0m   [0mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:13:20' WHERE `id` = 1[0m
+  [4;36;1mUser Update (0.000883)[0m   [0;1mUPDATE `users` SET `activation_code` = NULL, `activated_at` = NULL [0m
+  [4;35;1mUser Load (0.009721)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.000857)[0m   [0;1mUPDATE `users` SET `state` = 'passive', `updated_at` = '2008-07-26 04:13:20' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.165443)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001162)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.008738)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Update (0.000797)[0m   [0;1mUPDATE `users` SET `state` = 'suspended', `updated_at` = '2008-07-26 04:13:20' WHERE `id` = 1[0m
+  [4;35;1mUser Load (0.012567)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'quentin') AND (users.state = 'active') LIMIT 1[0m
+  [4;36;1mSQL (0.019866)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.001266)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000734)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.001136)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000578)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001197)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002807)[0m   [0mSELECT count(*) AS count_all FROM `products` [0m
+
+
+Processing ProductsController#create (for 0.0.0.0 at 2008-07-26 09:43:35) [POST]
+  Session ID: 
+  Parameters: {"product"=>{}, "action"=>"create", "controller"=>"products"}
+  [4;36;1mSQL (0.001819)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mROLLBACK[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mROLLBACK[0m

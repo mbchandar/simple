@@ -1,0 +1,30 @@
+<%= render :partial => "notice" %>
+<% form_for :product, :url => {:action => "save_reviews"} do |f|%>
+  <%= error_messages_for("review") %>
+  <p>
+    Write Review<br />
+    <%= hidden_field "review","product_id",:value=>@product.id %>
+    <%= text_area("review", "body", "cols" => 80, "rows" => 5) %>
+  </p>
+  <p>
+    <%= submit_tag "submit" %>
+  </p>
+<% end %>
+<br>
+<% if !@product.reviews.empty?   %>
+<a name="reviews" href="#"></a>
+  <b><%= pluralize(@product.reviews.count,"Review") %></b>
+  <div style="overflow:auto;height:100%">
+  <ol>
+  <% @reviews.each do |r| %>
+    <li id="comment-<%=r.id%>">
+      <cite><span><%= r.user.login %></span></cite> Says:
+      <br />
+      <small class="commentmetadata"><a href="#comment-<%=r.id%>"><%= r.created_at.strftime("%d %B %Y at %I:%M %p") %></a></small>
+
+      <p><%= r.body %></p>
+    </li>
+  <% end %>
+</ol></div>
+
+<% end %>

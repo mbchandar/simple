@@ -1,0 +1,54 @@
+<% if !@items.empty? %>
+  <div id="sidecart">
+    <b>Cart</b> (<%= link_to "clear",:action => :empty_cart %>)
+    <p>
+      Your cart contains <%= @items.size %> items.
+    </p>
+    <table cellpadding="3" cellspacing="3" border="0" width="100%">
+      <tr class="carttitle">
+        <td rowspan="2">
+          Description
+        </td>
+        <td colspan="2">
+          Price
+        </td>
+      </tr>
+      <tr class="carttitle">
+        <td>
+          Each
+        </td>
+        <td>
+          Total
+        </td>
+      </tr>
+      <%
+      for item in @items
+        product = item.product -%>
+        <tr>
+          <td>
+            <img width="100" height="100" src="<%= product.image_url %>" align="absmiddle"/>x <%= item.quantity %>
+          </td>
+          <td align="right">
+            <%= item.unit_price %>
+          </td>
+          <td align="right">
+            <%= item.unit_price * item.quantity %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2" align="right">
+          <strong>Total:</strong>
+        </td>
+        <td id="totalcell">
+          <%= @cart.total_price %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" align="right">
+          <b><%= link_to "Checkout",:action => :checkout %></b>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>
