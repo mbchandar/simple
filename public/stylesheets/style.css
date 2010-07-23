@@ -1,5 +1,6 @@
 body {
-  background-color: #FFF;
+/*    background: #7ec5fb url(/images/bg2.png) no-repeat fixed; */
+  
   font-family: Verdana, Helvetica, Arial;
   font-size: 11px;
 }
@@ -68,7 +69,7 @@ ul {
 
 #main {  
   width: 75%;
-  float: left;  
+  display:inline-block;  
 }
 
 
@@ -445,4 +446,9 @@ div#sidecart{
 /* catalog */
 .description{
 	text-align: justify;
+}
+
+/* seller */
+.action_icons {
+	text-align:center;
 }

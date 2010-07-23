@@ -12,7 +12,8 @@ class CreateOrders < ActiveRecord::Migration
   end
 
   def self.down
+    execute 'ALTER TABLE line_items DROP FOREIGN KEY  fk_items_order'
+    remove_column :line_items,:order_id
     drop_table :orders
-    remove_column :line_items,:order_id    
   end
 end

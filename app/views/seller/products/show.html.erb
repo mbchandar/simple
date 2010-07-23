@@ -1,0 +1,41 @@
+<% 
+	offer = Offer.find_by_product_id(@product.id) 
+   logger.info("Offer for product id " + @product.id.to_s)
+	#assets = Assets.count_by_attachable_id(@product.id)
+	logger.info("Assets count " )
+%>
+<div id="main">
+  <p>
+    <h2><%=h @product.title %></h2>
+  </p>
+  <p>
+    <% if logged_in? %>
+      <%= link_to 'Edit', edit_seller_product_path(@product) %> |
+      <%= link_to 'Back', seller_products_path %>
+    <% end %>
+  </p>  
+
+  <p>
+  	<%= CGI.unescapeHTML(@product.description) -%>    
+  </p>
+  <p>
+    <b>Price:</b>
+    <%= offer.list_price unless offer.nil? %>
+  </p>
+  <% if !@product.tag_names.empty? %>
+    <p>
+      <b>Tags:</b> <%=h @product.tag_names.join(" ") %>
+    </p>    
+  <% end  %>
+  <p>
+      More Images: <br> 
+        <% @product.assets.each do |attachment| %>
+	  <%= image_tag attachment.url(:normal)%>
+	<% end %>  
+    </p>
+</div>
+<div id="side">
+  <p>
+    <img src="<%= @product.image_url %>"/>
+  </p>
+</div>

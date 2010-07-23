@@ -44,9 +44,11 @@ class SessionsController < ApplicationController
   def successful_login
     if params[:remember_me] == "1"
       self.current_user.remember_me
+      logger.info("[SESSION]session remember_me " + session[:remember_me])
       cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
     end
     flash[:notice] = "Logged in successfully"
+    logger.info("[SESSION]session return " + session[:return_to].to_s)
     return_to = session[:return_to]
     if return_to.nil?
       redirect_to dashboard_path

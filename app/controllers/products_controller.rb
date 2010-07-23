@@ -1,22 +1,10 @@
 class ProductsController < ApplicationController
-  # GET /products GET /products.xml
+  # GET /products GET /products.xml  
   before_filter :authorize, :except => [:show,:search]
-  uses_tiny_mce :only => [:new, :create, :edit], :options => {
-                              :theme => 'advanced',
-                              :theme_advanced_resizing => true,
-                              :theme_advanced_resize_horizontal => false,                              
-                              :mode => "textareas",
-                              :height => 200,                              
-                              :remove_script_host => true,
-                              :theme_advanced_toolbar_location => 'top',
-                              :theme_advanced_toolbar_align => 'left',                              
-                              
-                              :plugins => %w{ contextmenu paste spellchecker table fullscreen }
-
-                            }
 
   def index
-    @products = Product.find(:all,:conditions=>['user_id = ?',current_user.id])
+  #  @products = Product.find(:all,:conditions=>['user_id = ?',current_user.id])
+    @products = Product.find(:all,:include => [:offers,:assets])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -25,10 +13,9 @@ class ProductsController < ApplicationController
 
   # GET /products/1 GET /products/1.xml
   def show
-    name = params[:id].split(/#/)
-    logger.info("ROSE " + name[0])
-    @product = Product.find(name[0].reverse)
-#@product = Product.find(params[:id])
+    name = params[:id]
+    logger.info("ROSE " + name)
+    @product = Product.find(name.reverse)    
     @reviews = Review.get_reviews_by_product(@product.id)
 
     respond_to do |format|
@@ -50,11 +37,12 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @product.description = CGI.unescapeHTML(@product.description);
   end
 
   # POST /products POST /products.xml
-  def create    
-    @product = Product.new(params[:product])       
+  def create     
+    @product = Product.new(params[:product])    
     @product.user_id = current_user.id    
     respond_to do |format|
       if @product.save

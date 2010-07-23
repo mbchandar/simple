@@ -5,8 +5,7 @@ class ProductImage < ActiveRecord::Base
     :max_size => 2000.kilobytes,
     :resize_to => '100x100>',
     :thumbnails => { :thumb => '50x50>' },
-    :path_prefix => 'public/products',
-    :processor    => 'MiniMagick'
+    :path_prefix => 'public/products'    
    
   validates_as_attachment
   attr_accessor :should_destroy

@@ -1,0 +1,32 @@
+<h2>Editing product</h2>
+<%= include_tiny_mce_if_needed %>
+<% form_for([:seller,@product],:html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+  <table border="1" cellpadding="10">	
+	<tr>
+		<td width="20%"><%= f.label :title %> </td>	
+		<td><%= f.text_field :title,:size => 110 %></td>
+	</tr>
+	<tr>				
+		<td colspan="2"><%= f.label :description %><%= f.text_area :description,:class => 'mceEditor', :cols => 80, :rows => 40%></td>
+	</tr>
+		<tr>
+		<td colspan="2">
+	 		<div id='uploads' style='border: 1px solid silver'>
+		    <%= file_field :attachment,:file%>
+		  </div>
+
+		</td>
+	</tr>	
+	
+	<tr>	
+		<td >Tags (seperated by space) </td>				
+		<td><%= text_field_tag('tags', '') %></td>
+	</tr>
+  </table>
+  <%= image_submit_tag("products/save.png", :border=>0, :title=>'Update Product Details' ,:align => 'absmiddle') %>
+  <%= link_to image_tag("products/info.png", :border=>0, :title=>'Show Product' ,:align => 'absmiddle'), :action => 'show', :id => @product %>
+  <%= link_to image_tag("products/back.png", :border=>0, :title=>'Back to Product List' ,:align => 'absmiddle'), seller_products_path %>
+<% end %>
+
+

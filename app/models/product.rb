@@ -1,19 +1,43 @@
 class Product < ActiveRecord::Base
   acts_as_taggable
-  belongs_to :user
+
+  Max_Attachments = 5
+  Max_Attachment_Size = 1.megabyte
+  
+  has_many :offers, :dependent => :destroy
+  has_many :users, :through => :offers
+  
+  has_many :assets, :as => :attachable, :dependent => :destroy, :class_name => "Assets"
+  
   has_many :line_items
   has_many :reviews
-  has_many :product_images, :dependent => :destroy
+  #has_many :product_images, :dependent => :destroy
+  
+  belongs_to :categories
+  belongs_to :manufacturers
+  
   has_and_belongs_to_many :tags
   before_save :encode_html
   after_update :save_images
+
+  #validate :validate_attachments
+
+  def validate_attachments
+    errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if assets.length > Max_Attachments
+    assets.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > Max_Attachment_Size}
+  end
 
   def self.search(keyword)
     find(:all,:conditions =>["title LIKE ? or description LIKE ? ",'%'+keyword+'%','%'+keyword+'%'])
   end
 
   def encode_html
-    self.description = ae_some_html(self.description)
+    #self.description = ae_some_html(self.description)
+    self.description = CGI.escapeHTML(self.description)
+  end
+  
+  def good_description
+    CGI.unescapeHTML(self.description)
   end
   
   def image_attributes=(image_attributes)
@@ -27,14 +51,8 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def save_images
-    product_images.each do |image|
-      if image.should_destroy?
-        image.destroy
-      else
-        image.save(false)
-      end
-    end
+  def save_images    
+    #TODO image resize
   end
   
   def seo_text
@@ -45,34 +63,4 @@ class Product < ActiveRecord::Base
     "#{title.downcase.gsub(/[^a-z0-9]+/i, '-')}-#{id}#reviews"
   end
 
-  def ae_some_html(s)
-    # converting newlines
-    s.gsub!(/\r\n?/, "\n")
- 
-    # escaping HTML to entities
-    s = s.to_s.gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')
- 
-    # blockquote tag support
-    s.gsub!(/\n?&lt;blockquote&gt;\n*(.+?)\n*&lt;\/blockquote&gt;/im, "<blockquote>\\1</blockquote>")
- 
-    # other tags: b, i, em, strong, u
-    %w(b i em strong u).each { |x|
-         s.gsub!(Regexp.new('&lt;(' + x + ')&gt;(.+?)&lt;/('+x+')&gt;',
-                 Regexp::MULTILINE|Regexp::IGNORECASE), 
-                 "<\\1>\\2</\\1>")
-        }
- 
-    # A tag support
-    # href="" attribute auto-adds http://
-    s = s.gsub(/&lt;a.+?href\s*=\s*['"](.+?)["'].*?&gt;(.+?)&lt;\/a&gt;/im) { |x|
-            '<a href="' + ($1.index('://') ? $1 : 'http://'+$1) + "\">" + $2 + "</a>"
-          }
- 
-    # replacing newlines to <br> ans <p> tags
-    # wrapping text into paragraph
-    s = "<p>" + s.gsub(/\n\n+/, "</p>\n\n<p>").
-            gsub(/([^\n]\n)(?=[^\n])/, '\1<br />') + "</p>"
- 
-    s      
-  end
 end

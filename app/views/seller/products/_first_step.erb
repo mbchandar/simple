@@ -1,0 +1,11 @@
+	<tr>
+		<td width="20%"><%= f.label :title %> </td>	
+		<td><%= f.text_field :title,:size => 110 %></td>
+	</tr>
+	<tr>				
+		<td colspan="2"><%= f.label :description %><%= f.text_area :description,:class => 'mceEditor', :cols => 80, :rows => 40%></td>
+	</tr>
+	<tr>	
+		<td >Tags (seperated by space) </td>				
+		<td><%= text_field_tag('tags', '') %></td>
+	</tr>

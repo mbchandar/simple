@@ -2,32 +2,32 @@
   <p>
     <h2><%=h @product.title %></h2>
   </p>
-
   <p>
-    <%=h @product.description %>
-  </p>
+    <% if logged_in? %>
+      <%= link_to 'Edit', edit_seller_product_path(@product) %> |
+      <%= link_to 'Back', products_path %>
+    <% end %>
+  </p>  
   <p>
     <b>Price:</b>
-    <%=h @product.price %>
+    <%# @product.price %>
+	<%= link_to image_tag("shopping_cart/add_to_shopping_cart.png", :border=>0, :title=>'Add to Cart' ,:align => 'absmiddle'), {:action => 'add_to_cart', :id => @product },:class => 'addtocart' %>
+	<%= link_to image_tag("shopping_cart/buy_now.png", :border=>0, :title=>'Buy Now' ,:align => 'absmiddle'), {:action => 'buy_now', :id => @product },:class => 'buynow' %>
   </p>
+  <p>
+  	<%= CGI.unescapeHTML(@product.description) -%>    
+  </p>
+  
   <% if !@product.tag_names.empty? %>
     <p>
       <b>Tags:</b> <%=h @product.tag_names.join(" ") %>
     </p>
-    <p>
-      More Images: <br> <br>
-      <% @product.product_images.each do |i| %>
-        <%= image_tag(i.public_filename(), :border => 0) %>
-      <% end %>
-    </p>
-  <% end  %>
-  <p>
-    <% if logged_in? %>
-      <%= link_to 'Edit', edit_product_path(@product) %> |
-      <%= link_to 'Back', products_path %>
-    <% end %>
-  </p>
-  <%= render :partial => "reviews"  %>
+    <% end %>  
+      More Images: <br> 
+        <% @product.assets.each do |attachment| %>
+	  <%= image_tag attachment.url(:normal)%>
+	<% end %>  
+
 </div>
 <div id="side">
   <p>

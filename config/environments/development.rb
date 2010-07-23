@@ -17,10 +17,6 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-#ActiveMerchant::Billing::Base.mode=:test
-#ActiveMerchant::Billing::Base.gateway_mode=:test
-#ActiveMerchant::Billing::Base.integration_mode = :test
-
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {

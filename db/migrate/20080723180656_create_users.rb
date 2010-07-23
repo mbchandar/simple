@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :state, :string, :null => :no, :default => 'passive'
       t.column :deleted_at, :datetime
     end
+    
   end
 
   def self.down

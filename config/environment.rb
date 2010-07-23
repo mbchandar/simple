@@ -25,6 +25,8 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem 'tiny_mce'
+  #config.gem 'deep_merge'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -36,7 +38,7 @@ Rails::Initializer.run do |config|
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Make Time.zone default to the specified zone, and make ActiveRecord store time values
   # in the database in UTC, and return them converted to the specified local zone.
@@ -48,7 +50,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_simple_session',
+    :key => '_simple_session',
     :secret      => 'a48e317e33ccf545e206814e7090be2abd560bd61ebe3d38d638dd7ff7fc7cbba98fdbab5c04627066441ca93f7ad5acfbf6ac7282c4e032a894e424a9333a82'
   }
 

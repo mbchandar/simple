@@ -1,21 +1,3 @@
-<% if product_image != nil %>
-  <% fields_for "product[image_attributes][]", product_image do |f| %>
-    <% if product_image.new_record? %>
-      <div class="newimage">
-        <p>
-          <%= f.file_field :uploaded_data, :class => "formField", :index => nil %>
-          <%= link_to_function "Remove", "$(this).up('.newimage').remove()" %>
-        </p>
-      </div>
-    <% else  %>
-      <div class="image">
-        <%= image_tag(product_image.public_filename(), :border => 0) %>
-        <%= f.file_field :uploaded_data , :index => nil, :style => 'display:none' %>
-        <%= link_to_function image_tag('cancel.png', :border => 0, :alt => "Delete image."), "mark_for_destroy(this)" %>
-
-        <%= f.hidden_field :id, :index => nil %>
-        <%= f.hidden_field :should_destroy, :index => nil, :class => 'should_destroy' %>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
+<% product.assets.each do |attachment| %>
+  <%= image_tag attachment.url(:normal)%>
+<% end %> 

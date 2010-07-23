@@ -1,0 +1,17 @@
+<div id="login_dialog" style="display:none;">
+<% form_for :sessions,:url => {:controller=>"sessions", :action => "create" },:html => {:id => 'login_form'} do -%>
+  <fieldset>
+    <p><label for="login">Login</label><br/>
+    <%= text_field_tag 'login' %></p>
+
+    <p><label for="password">Password</label><br/>
+    <%= password_field_tag 'password' %></p>
+
+    <p><label for="remember_me">Remember me:</label>
+    <%= check_box_tag 'remember_me' %></p>
+	   
+    <%= link_to 'Forgot Password?', forgot_password_url %>
+  </fieldset>
+
+<% end -%>
+</div>

@@ -5,7 +5,8 @@ class HomeController < ApplicationController
       flash[:info]= "Please activate the account from your email account!"
     end
     if logged_in?
-      @products = Product.find(:all,:conditions=>['user_id != ?',current_user.id])
+      #@products = Product.find(:all,:conditions=>['user_id != ?',current_user.id])
+      @products = Product.find(:all)
       @cart = find_cart
       @items = @cart.items
     else

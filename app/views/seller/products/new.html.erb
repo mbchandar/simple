@@ -1,0 +1,47 @@
+<h2>New product</h2>
+<%= include_tiny_mce_if_needed %>
+<% form_for([:seller,@product],:url => { :action => "create" },:html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <table border="1" cellpadding="10">	
+        <tr>
+          <td class="row_header"  colspan="2">General Information</td>
+        </tr>
+    	<tr>
+		<td width="20%"><%= f.label :title %> </td>	
+		<td><%= f.text_field :title,:size => 110 %></td>
+	</tr>
+	<tr>				
+		<td colspan="2"><%= f.label :description %><%= f.text_area :description,:class => 'mceEditor', :cols => 80, :rows => 40%></td>
+	</tr>
+	<tr>	
+		<td >Tags (seperated by space) </td>				
+		<td><%= text_field_tag('tags', '') %></td>
+	</tr>
+        <tr>
+          <td class="row_header"  colspan="2">Images</td>
+        </tr>
+	<tr>
+		<td colspan="2">
+		  Primary Image: <%= file_field :attachment,:file1%> <br/>
+                  Additional Images: <br/>
+                    <%= file_field :attachment,:file2%> <br/>
+                    <%= file_field :attachment,:file3%> <br/>
+                    <%= file_field :attachment,:file4%> <br/>
+                    <%= file_field :attachment,:file5%> <br/>
+		</td>
+	</tr>	
+        <tr>
+          <td class="row_header" colspan="2">Price Information</td>
+        </tr>
+	<tr>
+	  <td colspan="2">
+            Product Price  <%= text_field (:price,:list) %>
+            Your selling price  <%= text_field (:price,:offer) %>
+	  </td>
+	</tr>	
+
+  </table>
+  <%= image_submit_tag("products/save.png", :border=>0, :title=>'Add Product Details' ,:align => 'absmiddle') %>
+  <%= link_to image_tag("products/back.png", :border=>0, :title=>'Back to Product List' ,:align => 'absmiddle'), seller_products_path %>
+<% end %>

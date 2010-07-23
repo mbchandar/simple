@@ -1,11 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   title: Founders at Work
   description: Jessica Livingston has 
-  price: 25
-
+  product_code: BOOKFTW
+  version: 1.0
+  category_id: 1
+  manufacturer_id: 1
 two:
-  title: Dreaming in Code: Two Dozen 
+  id: 2
+  title: Dreaming in Code Two Dozen 
   description: Software is easy to make
-  price: 13
+  product_code: BOOKDIC
+  version: 1.0
+  category_id: 1
+  manufacturer_id: 1
+  

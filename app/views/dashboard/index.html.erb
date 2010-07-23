@@ -7,7 +7,7 @@
   </p>
   <h3>as a Seller</h3>
   <p>
-    <%= link_to 'List of Products that I am Selling...', products_path %> | <%= link_to 'Add New product',:controller=>"products" ,:action => 'new' %>
+    <%= link_to 'List of Products that I am Selling...', seller_products_path %> | <%= link_to 'Add New product',:controller=>[:seller,"/products"] ,:action => 'new' %>
   </p>
   <p>
     <%= link_to 'Orders I have received...', orders_path %>
