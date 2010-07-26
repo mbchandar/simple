@@ -4,7 +4,12 @@
 
 $(document).ready(function() {
     /* flash notice slide up animation */
-    window.setTimeout("$(\"#flash\").slideUp('slow')",2500);    	 
+    window.setTimeout("$(\"#flash\").slideUp('slow')",2500);
+
+    $.ajaxSetup({  
+        'beforeSend': function (xhr) {xhr.setRequestHeader("Accept", "text/javascript")}  
+    }); 
+
 
     /* Site header links */
     $("#login").bind("click", function() {	  
@@ -34,9 +39,10 @@ $(document).ready(function() {
         return false;
     }); 
     
-    $("#offer").bind("click", function() {	  
+    $(".offer").bind("click", function() {
         $("#offer_dialog").dialog({ modal: true,
                                     width: '400px',
+                                    height: '400',
                                     title: 'Create your Offer',
                                     position: 'center',
                                     resizable: false,
@@ -44,8 +50,38 @@ $(document).ready(function() {
                                     closeOnEscape: true,
                                     buttons: { 
                                         "Cancel": function() { $(this).dialog("close"); },
-                                        "Create Offer": function() { $("#offer_form").submit(); } 
-                                    }});		
+                                        "Create Offer": function() {
+                                            $("#offer_form").submit()
+                                        }
+                                    }
+                                  });
+        return false;
+    });
+
+    $(".addtocart").bind("click", function() {
+        $('#cart_dialog').empty();
+        $.get($(this).attr('href'),null,null,'script');
+        $("#cart_dialog").dialog({ modal: true,
+                                    width: '600px',
+                                    height: '400',
+                                    title: 'Your Cart Items..',
+                                    position: 'center',
+                                    resizable: false,
+                                    draggable: false,
+                                    closeOnEscape: true,
+                                    buttons: { 
+                                        "Continue Shopping...": function() { $(this).dialog("close"); },
+                                        "Checkout Now!": function() {
+                                            $("#offer_form").submit()
+                                        }
+                                    }
+                                  });
+        return false;
+    });
+
+
+    $("#offer_form").bind("submit",function(){
+        $.post($(this).attr('action'),$(this).serialize(),null,'script');
         return false;
     });
 

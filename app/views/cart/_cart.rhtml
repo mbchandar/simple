@@ -23,16 +23,16 @@
       </tr>
       <%
       for item in @items
-        product = item.product -%>
+        offer = item.offer -%>
         <tr>
           <td>
-            <img width="100" height="100" src="<%= product.image_url %>" align="absmiddle"/>x <%= item.quantity %>
+            <%= offer.user_product_offers.first.product.title %> x <%= item.quantity %>
           </td>
           <td align="right">
-            <%= item.unit_price %>
+            <%= offer.offer_price %>
           </td>
           <td align="right">
-            <%= item.unit_price * item.quantity %>
+            <%= offer.offer_price * item.quantity %>
           </td>
         </tr>
       <% end %>

@@ -41,14 +41,16 @@ class OffersController < ApplicationController
   # POST /offers.xml
   def create
     @offer = Offer.new(params[:offer])
-
+    flash[:notice] = "Offer was successfully created."
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to(@offer, :notice => 'Offer was successfully created.') }
+        format.html { redirect_to(@offer) }
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @offer.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

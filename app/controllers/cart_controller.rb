@@ -1,5 +1,15 @@
 class CartController < ApplicationController
 
+  def index
+    @cart = find
+    @items = @cart.items
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @products }
+    end
+  end
+
   def checkout
     @cart = find
     @items = @cart.items
@@ -26,17 +36,26 @@ class CartController < ApplicationController
   end
 
   def add
+    logger.info("[CART][ADD] which product is being added ? " + params[:id])
+    
     begin
       product = Product.find(params[:id])
+      offer = product.offers.first
       @cart = find
-      @current_item = @cart.add_product(product)
+      logger.info(@cart.inspect + product.inspect)
+      @current_item = @cart.add_product(product,offer)
       flash[:notice] = "Product <b>#{product.title}</b> added to cart!"
-    rescue
-      logger.error("[CART]Attempt to access invalid product #{params[:id]}")
+    rescue Exception => exc
+      logger.error("[CART]Attempt to access invalid product #{params[:id]} #{exc.message}")
+      raise exc
       flash[:error] = 'Product does not exist'
-#      redirect_to(:action => 'index')
     end
-    redirect_to product
+    @items = @cart.items
+    respond_to do |format|
+      format.html { redirect_to cart_path}
+      format.xml  { render :xml => @products }
+      format.js
+    end
   end
 
   def empty

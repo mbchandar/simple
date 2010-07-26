@@ -7,15 +7,31 @@ class Cart
     @total_price = 0.0
   end
 
-  def add_product(product)
-    logger.info("[CART] add_product model")
-    item = @items.find {|i| i.product_id == product.id}
+  def add_product(product,offer)
+    item = @items.find {|i| i.offer == offer}
     if item
-      item.quantity += 1
+      item.increment_quantity
     else
-      item = LineItem.for_product(product)
+      item = CartItem.new(offer)
       @items << item
     end
-    @total_price += product.offers.price
+    @total_price += offer.offer_price
+  end
+end
+
+class CartItem
+  attr_reader :offer, :quantity
+  def initialize(offer)
+    @offer = offer
+    @quantity = 1
+  end
+  def increment_quantity
+    @quantity += 1
+  end
+  def title
+    @offer.title
+  end
+  def price
+    @offer.offer_price * @quantity
   end
 end

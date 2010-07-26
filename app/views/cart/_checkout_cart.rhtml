@@ -22,20 +22,21 @@
     </tr>
     <%
     for item in @items
-      product = item.product -%>
+      offer = item.offer 
+        -%>
       <tr>
         <td align="left">
-          <%= check_box("remove", product.id, {}, "yes", "no") %>
-          <%= product.title %>
+          <%= check_box("remove", offer.id, {}, "yes", "no") %>
+          <%= offer.user_product_offers.first.product.title %>
         </td>
         <td align="right">
-          <%= item.unit_price %>
+          <%= offer.offer_price %>
         </td>
         <td align="right">
           x <%= item.quantity %>
         </td>
         <td align="right">
-          <%= item.unit_price * item.quantity %>
+          <%= offer.offer_price * item.quantity %>
         </td>
       </tr>
     <% end %>
