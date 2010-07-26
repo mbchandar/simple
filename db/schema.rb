@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721025642) do
+ActiveRecord::Schema.define(:version => 20100725063446) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(:version => 20100721025642) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.integer  "parent",     :default => 0
+    t.integer  "parent"
+    t.integer  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,13 +46,12 @@ ActiveRecord::Schema.define(:version => 20100721025642) do
   create_table "manufacturers", :force => true do |t|
     t.string   "name"
     t.string   "logo"
+    t.integer  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "offers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
     t.string   "sku"
     t.float    "list_price"
     t.float    "offer_price"
@@ -97,9 +97,11 @@ ActiveRecord::Schema.define(:version => 20100721025642) do
     t.integer  "manufacturer_id"
   end
 
-  create_table "products_tags", :force => true do |t|
-    t.integer "tag_id"
-    t.integer "product_id"
+  create_table "products_tags", :id => false, :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", :force => true do |t|
@@ -128,10 +130,27 @@ ActiveRecord::Schema.define(:version => 20100721025642) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string "name", :default => "--- :null\n"
+    t.string   "name",       :default => "--- :null\n"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
+
+  create_table "user_product_offers", :id => false, :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "offer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_products", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login"

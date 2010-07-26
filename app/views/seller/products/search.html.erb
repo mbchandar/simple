@@ -1,0 +1,21 @@
+<h2>Search product</h2>
+<%- form_tag @product, :method=> :get do -%>
+<table border="1" cellpadding="10">	
+  <tr>
+    <td width="20%">Search  </td>
+    <td>
+      <%= text_field_tag :product, params[:product] %>
+      <%= submit_tag "search", :name => nil %>
+    </td>
+  </tr>  
+</table>
+<%- end -%>
+
+<% if !@products.nil? %>
+<div id="search_listing">
+<%= render :partial => "search_list" %>
+</div>
+<div id="offer_dialog" style="display:none;">
+<%= render :partial => "offer"%>
+</div>
+<% end %>

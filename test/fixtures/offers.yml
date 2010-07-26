@@ -5,8 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
-    user_id: 1
-    product_id: 1 
+    id: 1
     sku: BOOK1
     list_price: 24
     offer_price: 19.99
@@ -15,8 +14,7 @@ one:
     date_available: 2.days.from_now
     expired_at: null   
 two: 
-    user_id: 2
-    product_id: 2
+    id: 2
     sku: BOOK2
     list_price: 42
     offer_price: 30.99

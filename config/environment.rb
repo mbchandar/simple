@@ -26,12 +26,13 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'tiny_mce'
-  #config.gem 'deep_merge'
+  #config.gem 'deep_merge', :version => '0.2.0'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+  config.plugins = [:all]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
@@ -67,4 +68,30 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
   config.active_record.observers = :user_observer
+end
+
+module ActiveSupport
+  class BufferedLogger
+    def add(severity, message = nil, progname = nil, &block)
+      return if @level > severity
+      message = (message || (block && block.call) || progname).to_s
+
+      level = { 
+        0 => "DEBUG",
+        1 => "INFO",
+        2 => "WARN",
+        3 => "ERROR",
+        4 => "FATAL"
+      }[severity] || "U"
+
+      message = "[%s: %s #%d] %s" % [level,
+                                     Time.now.strftime("%m%d %H:%M:%S"),
+                                     $$,
+                                     message]
+      message = "#{message}\n" unless message[-1] == ?\n
+      buffer << message
+      auto_flush
+      message
+    end
+  end
 end

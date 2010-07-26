@@ -1,0 +1,36 @@
+<h1>Editing offer</h1>
+
+<% form_for(@offer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :sku %><br />
+    <%= f.text_field :sku %>
+  </p>
+  <p>
+    <%= f.label :list_price %><br />
+    <%= f.text_field :list_price %>
+  </p>
+  <p>
+    <%= f.label :offer_price %><br />
+    <%= f.text_field :offer_price %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :date_available %><br />
+    <%= f.datetime_select :date_available %>
+  </p>
+  <p>
+    <%= f.label :expired_at %><br />
+    <%= f.datetime_select :expired_at %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @offer %> |
+<%= link_to 'Back', offers_path %>

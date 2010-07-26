@@ -3,6 +3,7 @@ class CreateManufacturers < ActiveRecord::Migration
     create_table :manufacturers do |t|
       t.string :name
       t.string :logo
+      t.integer :is_active
       t.timestamps
     end
   end

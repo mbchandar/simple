@@ -1,0 +1,47 @@
+<% form_for @offer, :html => { :id => "offer_form"} do |f| %>
+  <%= f.error_messages %>
+  <table width="100%" cellspacing="5" cellpading="5">
+    <tr>
+      <td>
+        <%= f.label :sku %>
+      </td>
+      <td>
+        <%= f.text_field :sku, :size => 10 %>
+      </td>
+      <td>
+        <%= f.label :quantity %> 
+      </td>
+      <td>
+        <%= f.text_field :quantity, :size => 10 %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :list_price %>
+      </td>
+      <td>
+        <%= f.text_field :list_price, :size => 10 %>
+      </td>
+      <td>
+        <%= f.label :offer_price %>
+      </td>
+      <td>
+        <%= f.text_field :offer_price, :size => 10 %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :date_available %>
+      </td>
+      <td>
+        <%= f.text_field :date_available, :class => "date_available", :size => 12 %>
+      </td>
+      <td>
+        <%= f.label :expired_at %>
+      </td>
+      <td>
+        <%= f.text_field :expired_at, :class => "date_available",:size => 12%>
+      </td>
+    </tr>
+</table>
+<% end %>

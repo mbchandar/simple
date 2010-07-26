@@ -1,0 +1,37 @@
+<%
+  if @products.count == 0
+    %>
+  <h3>Sorry. No products found matching your criteria.</h3>
+  <p>
+    <%= link_to 'Add New product', new_seller_product_path %>
+  </p>
+<% else %>
+  <table cellpadding="5" border="1" width="100%">
+    <tr>
+      <th>Product Id</th>
+      <th>Product Title</th>
+      <th>Description</th>
+      <th>Actions</th>		
+    </tr>
+    <%
+      odd_or_even = 0
+      for product in @products
+        odd_or_even = 1 - odd_or_even 
+        offer = product.offers.first
+        %>
+    <tr valign="top" class="ListLine<%= odd_or_even %>">
+      <td><%= product.id %></td>
+      <td><%=h (product.title) %></td>
+      <td>
+        <%= (truncate(product.good_description, 300)) %>
+        <%= offer.date_available.strftime("Available from %d %B %Y") unless !offer.date_available? %>
+      </td>
+
+      <td width="15%" class="action_icons">
+        <%= link_to 'Sell it now', seller_products_path, :id => :offer %>
+        <%= link_to "Signup", signup_url,:id => :signup %>
+      </td>
+    </tr>
+<% end %>
+</table>
+<% end %>

@@ -10,15 +10,7 @@
 	<tr>				
 		<td colspan="2"><%= f.label :description %><%= f.text_area :description,:class => 'mceEditor', :cols => 80, :rows => 40%></td>
 	</tr>
-		<tr>
-		<td colspan="2">
-	 		<div id='uploads' style='border: 1px solid silver'>
-		    <%= file_field :attachment,:file%>
-		  </div>
-
-		</td>
-	</tr>	
-	
+        <%= render :partial => 'photos'%>	
 	<tr>	
 		<td >Tags (seperated by space) </td>				
 		<td><%= text_field_tag('tags', '') %></td>

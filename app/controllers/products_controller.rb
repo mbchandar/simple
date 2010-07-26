@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   # GET /products GET /products.xml  
-  before_filter :authorize, :except => [:show,:search]
+  #before_filter :authorize, :except => [:show,:search]
 
   def index
   #  @products = Product.find(:all,:conditions=>['user_id = ?',current_user.id])

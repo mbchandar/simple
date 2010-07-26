@@ -3,7 +3,7 @@
 one:
   id: 1
   title: Founders at Work
-  description: Jessica Livingston has 
+  description: Why is software so hard?
   product_code: BOOKFTW
   version: 1.0
   category_id: 1

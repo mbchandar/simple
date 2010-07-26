@@ -11,7 +11,7 @@
   <p>
     <b>Price:</b>
     <%# @product.price %>
-	<%= link_to image_tag("shopping_cart/add_to_shopping_cart.png", :border=>0, :title=>'Add to Cart' ,:align => 'absmiddle'), {:action => 'add_to_cart', :id => @product },:class => 'addtocart' %>
+	<%= link_to image_tag("shopping_cart/add_to_shopping_cart.png", :border=>0, :title=>'Add to Cart' ,:align => 'absmiddle'), {:controller => :cart,:action => 'add', :id => @product },:class => 'addtocart' %>
 	<%= link_to image_tag("shopping_cart/buy_now.png", :border=>0, :title=>'Buy Now' ,:align => 'absmiddle'), {:action => 'buy_now', :id => @product },:class => 'buynow' %>
   </p>
   <p>

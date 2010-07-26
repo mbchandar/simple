@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @manufacturer.name %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%=h @manufacturer.logo %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%=h @manufacturer.is_active %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_manufacturer_path(@manufacturer) %> |
+<%= link_to 'Back', system_manufacturers_path %>

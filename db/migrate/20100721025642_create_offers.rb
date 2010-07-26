@@ -1,8 +1,6 @@
 class CreateOffers < ActiveRecord::Migration
   def self.up
     create_table :offers do |t|
-      t.references :user
-      t.references :product
       t.string :sku
       t.float :list_price
       t.float :offer_price

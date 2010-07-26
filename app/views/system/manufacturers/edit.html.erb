@@ -1,0 +1,24 @@
+<h1>Editing manufacturer</h1>
+
+<% form_for([:system,@manufacturer]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :logo %><br />
+    <%= f.text_field :logo %>
+  </p>
+  <p>
+    <%= f.label :is_active %><br />
+    <%= f.text_field :is_active %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', system_manufacturer_path(@manufacturer) %> |
+<%= link_to 'Back', system_manufacturers_path %>

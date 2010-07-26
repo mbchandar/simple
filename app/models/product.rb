@@ -3,9 +3,15 @@ class Product < ActiveRecord::Base
 
   Max_Attachments = 5
   Max_Attachment_Size = 1.megabyte
-  
-  has_many :offers, :dependent => :destroy
-  has_many :users, :through => :offers
+
+  has_many :user_products
+  has_many :user_product_offers, :dependent => :destroy
+  has_many :offers, :through => :user_product_offers, :source => :offer
+  has_many :users, :through => :user_products
+
+  accepts_nested_attributes_for :offers, :reject_if => lambda {|a| a[:list_price].blank? },:allow_destroy => true
+  #accepts_nested_attributes_for :user_product_offers, :allow_destroy => true
+  #accepts_nested_attributes_for :user_products,:allow_destroy => true
   
   has_many :assets, :as => :attachable, :dependent => :destroy, :class_name => "Assets"
   
@@ -33,6 +39,7 @@ class Product < ActiveRecord::Base
 
   def encode_html
     #self.description = ae_some_html(self.description)
+    self.version = 1
     self.description = CGI.escapeHTML(self.description)
   end
   

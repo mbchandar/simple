@@ -15,7 +15,7 @@ class FixProductTable < ActiveRecord::Migration
   end
 
   def self.down
-#    add_column :products,:user_id, :integer
+    add_column :products,:user_id, :integer
     add_column :products,:price, :integer
     add_column :products,:date_available, :datetime
     remove_column :products, :product_code

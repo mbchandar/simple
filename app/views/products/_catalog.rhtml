@@ -17,25 +17,25 @@
         </p>
         <p class="description">
           <%= (truncate(product.good_description,500)) %>
-		  <%= link_to "read more", product.seo_text %>
+	  <%= link_to "read more", product.seo_text %>
         </p>        
         <p>
           <%# product.date_available.strftime("Available from %d %B %Y") unless !product.date_available? %>
         </p>
         <p>
-        	<div>
-          <b>Price:</b> <%# product.price %>
-		  </div>          
+          <div>
+            <b>Price:</b> <%# product.price %>
+	  </div>          
           <b><%= link_to image_tag("shopping_cart/add_to_shopping_cart.png", :border=>0, :title=>'Add to Cart' ,:align => 'absmiddle'), home_path(:add_to_cart2),:class => 'addtocart' %></b> |		  
           <b><%= link_to pluralize(product.reviews.count,"Review"), product.to_reviews unless product.reviews.empty? %></b>
-        <br/>
-      </p>
-      <p>
-        <% if !product.tag_names.empty? %>
-          <b>Tags:</b> <%=h product.tag_names.join(" ") %>
-        <% end  %>
-      </p>
-    </td>
-  </tr>
-</table>
+          <br/>
+        </p>
+        <p>
+          <% if !product.tag_names.empty? %>
+            <b>Tags:</b> <%=h product.tag_names.join(" ") %>
+          <% end  %>
+        </p>
+      </td>
+    </tr>
+  </table>
 <% end %>

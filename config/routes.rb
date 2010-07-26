@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :offers
+
+  map.resources :offers
+
+
   map.resources :users
 
 
@@ -38,7 +43,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :home
    
   map.namespace :seller do |seller|
-    seller.resources :products
+    seller.root :controller => :seller
+    seller.resources :products, :collection => { :search => :get}
+    seller.resources :reviews
+  end
+
+  map.namespace :system do |system|
+    system.root :controller => :admin
+    system.resources :categories
+    system.resources :manufacturers
   end
   
   # See how all your routes lay out with "rake routes"
@@ -46,7 +59,9 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   
   map.resources :products
-  map.resource :sessions
+  map.resources :sessions
+
+  map.resources :cart
 
   map.payment '/payment',:controller=>'payment'
   #map.home '', :controller => 'home', :action => 'index'

@@ -1,0 +1,28 @@
+<h1>Listing categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Parent</th>
+    <th>Is active</th>
+    <th>Created On</th>
+    <th>Updated On</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%=h category.name %></td>
+    <td><%=h category.parent %></td>
+    <td><%=h category.is_active %></td>
+    <td><%=h category.created_at %></td>
+    <td><%=h category.updated_at %></td>
+    <td><%= link_to 'Show', system_category_path(category) %></td>
+    <td><%= link_to 'Edit', edit_system_category_path(category) %></td>
+    <td><%= link_to 'Destroy', system_category_path(category), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New category', new_system_category_path %>

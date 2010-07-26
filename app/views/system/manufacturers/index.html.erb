@@ -1,0 +1,28 @@
+<h1>Listing manufacturers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Logo</th>
+    <th>Is active</th>
+    <th>Created At</th>
+    <th>Updated At</th>
+  </tr>
+
+<% @manufacturers.each do |manufacturer| %>
+  <tr>
+    <td><%=h manufacturer.name %></td>
+    <td><%=h manufacturer.logo %></td>
+    <td><%=h manufacturer.is_active %></td>
+    <td><%=h manufacturer.created_at %></td>
+    <td><%=h manufacturer.updated_at %></td>
+    <td><%= link_to 'Show', system_manufacturer_path(manufacturer) %></td>
+    <td><%= link_to 'Edit', edit_system_manufacturer_path(manufacturer) %></td>
+    <td><%= link_to 'Destroy', system_manufacturer_path(manufacturer), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New manufacturer', new_system_manufacturer_path %>

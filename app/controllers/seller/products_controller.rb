@@ -1,12 +1,13 @@
-class Seller::ProductsController < ApplicationController
-  before_filter :authorize, :except => [:show,:search]
+class Seller::ProductsController < Seller::SellerController
+
   uses_tiny_mce :only => [:new, :create, :edit]  
 
   def index
     
     @user = User.find(current_user.id)
     logger.info("user id " + @user.id.to_s)
-    @products = @user.products.all(:include => :offers)
+    #@products = @user.products.all(:include => :offers)
+    @offers = @user.offers.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -28,6 +29,9 @@ class Seller::ProductsController < ApplicationController
   # GET /products/new GET /products/new.xml
   def new
     @product = Product.new
+    1.times { @product.offers.build }    
+    @product.user_products.build
+    @categories = Category.all(:conditions => ["is_active = 1"])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
@@ -42,14 +46,13 @@ class Seller::ProductsController < ApplicationController
 
   
   # POST /products POST /products.xml
-  def create     
-    @product = Product.new(params[:product])    
-    #@product.user_id = current_user.id 
+  def create    
+    @product = Product.new(params[:product])
     process_file_uploads(@product)
-
     respond_to do |format|
       if @product.save
-        @product.tag(params[:tags])       
+        @product.tag(params[:tags])
+        @product.user_products.build({:user_id => current_user.id, :product_id => @product})
         flash[:notice] = 'Product was successfully created.'
         format.html { redirect_to(seller_products_url) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
@@ -94,13 +97,31 @@ class Seller::ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = { }
+    @offer = Offer.new
+    if !params[:product].nil?
+      logger.info("[PRODUCT]Search text =>" + params[:product])
+      @products = Product.find(:all, :conditions => ['title LIKE ?',"%#{params[:product]}%"])
+      logger.info("[PRODUCT] products matching the search keyword => " + @products.count.to_s)
+    end
+  end
+
   protected
 
   def process_file_uploads(product)
     logger.info("[PRODUCT] uploading the product images")
-    i=1
-    while !params[:attachment]['file'+i.to_s].nil?
+
+    if params[:attachment].nil?
+      logger.info("[PRODUCT] no attachments...")
+      return false 
+    end
+    i=0
+    while params[:attachment]['file'+i.to_s] != "" && !params[:attachment]['file'+i.to_s].nil?
       product.assets.build(:data => params[:attachment]['file'+i.to_s])
+      if(i==0)
+        product.image_url = params[:attachment]['file'+i.to_s].original_path
+      end
       i=i+1
     end
   end

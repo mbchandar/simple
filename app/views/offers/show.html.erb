@@ -1,0 +1,33 @@
+<p>
+  <b>Sku:</b>
+  <%=h @offer.sku %>
+</p>
+
+<p>
+  <b>List price:</b>
+  <%=h @offer.list_price %>
+</p>
+
+<p>
+  <b>Offer price:</b>
+  <%=h @offer.offer_price %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%=h @offer.quantity %>
+</p>
+
+<p>
+  <b>Date available:</b>
+  <%=h @offer.date_available %>
+</p>
+
+<p>
+  <b>Expired at:</b>
+  <%=h @offer.expired_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>

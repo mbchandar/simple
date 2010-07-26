@@ -7,6 +7,8 @@
 one:
     id: 1
     name: Apress    
+    is_active: 1
 two:
     id: 2
-    name: Adidas    
+    name: Adidas
+    is_active: 1    

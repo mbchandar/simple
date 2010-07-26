@@ -1,8 +1,12 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  has_many :offers, :dependent => :destroy
-  has_many :products, :through => :offers 
-  
+
+  has_many :user_products, :dependent => :destroy
+  has_many :user_product_offers, :dependent => :destroy
+  has_many :products, :through => :user_products, :source => :product
+  has_many :offers, :through => :user_product_offers, :source => :offer
+
+
   has_many :reviews
 
   # Virtual attribute for the unencrypted password

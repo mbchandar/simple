@@ -8,7 +8,9 @@ one:
     id: 1
     name: Books
     parent: 0
-two:
+    is_active: 1
+two: 
     id: 2
-    name: Movies
+    name: Music
     parent: 0
+    is_active: 1
